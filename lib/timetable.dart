@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 class TimetableScreen extends StatefulWidget {
+  const TimetableScreen({super.key});
+
   @override
   _TimetableScreenState createState() => _TimetableScreenState();
 }
@@ -19,7 +20,8 @@ class _TimetableScreenState extends State<TimetableScreen> {
   }
 
   void _initializeSubjectControllers() {
-    subjectControllers = List.generate(subjectCount, (index) => TextEditingController());
+    subjectControllers =
+        List.generate(subjectCount, (index) => TextEditingController());
   }
 
   @override
@@ -69,17 +71,14 @@ class _TimetableScreenState extends State<TimetableScreen> {
                         ),
                         onChanged: (value) {
                           int? count = int.tryParse(value);
-                         
 
-                            setState(() {
-                               if (count != null && count > 0) {
-                                  subjectCount = count;
-                               }
-                            
-                              _initializeSubjectControllers();
-                            });
-                          
-                        
+                          setState(() {
+                            if (count != null && count > 0) {
+                              subjectCount = count;
+                            }
+
+                            _initializeSubjectControllers();
+                          });
                         },
                       ),
                     ),

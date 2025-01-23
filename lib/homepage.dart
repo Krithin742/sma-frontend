@@ -1,87 +1,155 @@
 import 'package:flutter/material.dart';
+import 'package:student/Alarm.dart';
+import 'package:student/activity.dart';
+import 'package:student/convert.dart';
+import 'package:student/chatbot.dart'; // Ensure this path is correct
 
-class homeScreen extends StatelessWidget {
-  const homeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 58, 150, 226),
-        title: const Text('EDUSYNC'),
+        title: const Text('SnapSumm'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // Handle menu button action
-          },
+        elevation: 0,
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF85D8CE), Color(0xFF4EABE3)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 30),
+              Text(
+                "Welcome to SnapSumm",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 20),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SavedFilesScreen(
+                          savedFiles: [],
+                        ),
+                      ));
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        "No converted files yet.",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Converted file ",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _iconWithText(Icons.calendar_month, "Reminder", () {
+                    print('Reminder clicked');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AlarmSettingScreen()),
+                    );
+                  }),
+                  _iconWithText(Icons.assignment, "Summarize File", () {
+                    print('Summarize File clicked');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Convert()),
+                    );
+                  }),
+                  _iconWithText(Icons.chat_bubble_outline, "ChatBot", () {
+                    print('ChatBot clicked');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatScreen()),
+                    );
+                  }),
+                ],
+              ),
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(
-                  color: Colors.grey.shade300,
-                  width: 1.5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    blurRadius: 4,
-                    offset: const Offset(2, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Heading",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    "Content goes here. Add any text or description inside this box.",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.calendar_month),
-                      iconSize: 50.0,
-                      onPressed: () {
-                        // Handle create timetable action
-                      },
-                    ),
-                    const Text('Create a\nTimetable',
-                        textAlign: TextAlign.center),
-                  ],
+    );
+  }
+
+  Widget _iconWithText(IconData icon, String label, GestureTapCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 8,
+                  offset: const Offset(2, 2),
                 ),
               ],
             ),
-          ],
-        ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(
+                icon,
+                color: const Color(0xFF4EABE3),
+                size: 40,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            label,
+            style: const TextStyle(color: Colors.white, fontSize: 14),
+          ),
+        ],
       ),
-     
     );
   }
 }

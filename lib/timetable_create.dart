@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TimetableScreen extends StatelessWidget {
+class TimetableScreen1 extends StatelessWidget {
+  const TimetableScreen1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +47,8 @@ class TimetableScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               itemCount: 24, // 24 hours for the entire day
               itemBuilder: (context, index) {
-                final formattedTime = formatTime(index); // Dynamic time formatting
+                final formattedTime =
+                    formatTime(index); // Dynamic time formatting
                 return TaskCard(
                   time: formattedTime,
                   taskTitle: 'Task ${index + 1}',
@@ -67,7 +70,8 @@ class TimetableScreen extends StatelessWidget {
   // Function to format time dynamically
   String formatTime(int hour) {
     final period = hour < 12 ? 'AM' : 'PM';
-    final formattedHour = hour % 12 == 0 ? 12 : hour % 12; // Convert to 12-hour format
+    final formattedHour =
+        hour % 12 == 0 ? 12 : hour % 12; // Convert to 12-hour format
     return '$formattedHour:00 $period';
   }
 }
@@ -76,7 +80,7 @@ class TabButton extends StatelessWidget {
   final String text;
   final bool isSelected;
 
-  const TabButton({required this.text, required this.isSelected});
+  const TabButton({super.key, required this.text, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +110,7 @@ class TaskCard extends StatelessWidget {
   final String taskDescription;
 
   const TaskCard({
+    super.key,
     required this.time,
     required this.taskTitle,
     required this.taskDescription,
