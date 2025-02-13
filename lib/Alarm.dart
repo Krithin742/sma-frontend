@@ -3,6 +3,8 @@ import 'package:alarm/alarm.dart';
 import 'package:intl/intl.dart';
 
 class AlarmSettingScreen extends StatefulWidget {
+  const AlarmSettingScreen({super.key});
+
   @override
   _AlarmSettingScreenState createState() => _AlarmSettingScreenState();
 }
@@ -10,7 +12,7 @@ class AlarmSettingScreen extends StatefulWidget {
 class _AlarmSettingScreenState extends State<AlarmSettingScreen> {
   DateTime? _selectedDate;
   TimeOfDay _selectedTime = TimeOfDay.now();
-  TextEditingController _messageController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
 
   Future<void> _pickDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -59,7 +61,7 @@ class _AlarmSettingScreenState extends State<AlarmSettingScreen> {
         SnackBar(content: Text('Selected date and time must be in the future')),
       );
       return;
-    }
+    }   
 
     _scheduleAlarm(alarmDateTime);
   }

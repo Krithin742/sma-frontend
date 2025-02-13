@@ -92,21 +92,21 @@ class RegistrationPage extends StatelessWidget {
                   },
                 ),
                 // Confirm Password Field
-                _buildTextField(
-                  label: 'Confirm Password',
-                  controller: confirmPasswordController,
-                  icon: Icons.lock_outline,
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please confirm your password';
-                    }
-                    if (value != passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
-                  },
-                ),
+                //_buildTextField(
+                // label: 'Confirm Password',
+                // controller: confirmPasswordController,
+                //icon: Icons.lock_outline,
+                //obscureText: true,
+                //validator: (value) {
+                //if (value == null || value.isEmpty) {
+                //return 'Please confirm your password';
+                //}
+                //if (value != passwordController.text) {
+                //return 'Passwords do not match';
+                //}
+                //return null;
+                //},
+                //),
                 SizedBox(height: 30.0),
                 // Register Button
                 ElevatedButton(

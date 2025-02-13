@@ -1,11 +1,9 @@
 import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:student/Alarm.dart';
-import 'package:student/LoginPage.dart';
-import 'package:student/RegistrationPage.dart';
-import 'package:student/activity.dart';
 import 'package:student/homepage.dart';
-import 'package:student/chatbot.dart';
+import 'package:student/RegistrationPage.dart';
+import 'package:student/LoginPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
