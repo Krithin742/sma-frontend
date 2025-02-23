@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student/student/registration.dart';
 
 class RegistrationPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -118,6 +119,8 @@ class RegistrationPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
+                      registerUser(usernameController.text,
+                          phoneNumberController.text, passwordController.text,context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Registration Successful!')),
                       );

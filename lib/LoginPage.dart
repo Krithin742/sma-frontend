@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:student/RegistrationPage.dart';
+import 'package:student/student/login.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController(text: 'aaa');
+  final TextEditingController passwordController = TextEditingController(text: '111111');
 
   LoginPage({super.key});
 
@@ -98,9 +100,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Login Successful!')),
-                      );
+                      loginUser(usernameController.text,
+                          passwordController.text, context);
                     }
                   },
                   child: Text(
@@ -114,6 +115,11 @@ class LoginPage extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {
                       // Navigate to registration page
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegistrationPage(),
+                          ));
                     },
                     child: Text(
                       "Don't have an account? Sign Up",
