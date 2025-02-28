@@ -9,6 +9,9 @@ Future<List<Map<String, dynamic>>> getHistoryfromapi() async {
     Response response = await dio.get('$baseurl/sumHistory');
     // print(response.data);
     // Check if the response is successful
+    print('object');
+    print(response.data);
+
     if (response.statusCode == 200) {
       // Check if the response data is a List
 

@@ -4,8 +4,8 @@ import 'package:student/student/login.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController usernameController = TextEditingController(text: 'aaa');
-  final TextEditingController passwordController = TextEditingController(text: '111111');
+  final TextEditingController usernameController = TextEditingController(text: 'qqq');
+  final TextEditingController passwordController = TextEditingController(text: 'qqqqqq');
 
   LoginPage({super.key});
 

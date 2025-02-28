@@ -119,8 +119,11 @@ class RegistrationPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      registerUser(usernameController.text,
-                          phoneNumberController.text, passwordController.text,context);
+                      registerUser(
+                          usernameController.text,
+                          phoneNumberController.text,
+                          passwordController.text,
+                          context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Registration Successful!')),
                       );

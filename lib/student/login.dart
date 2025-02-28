@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:student/homepage.dart';
 
-String baseurl = "http://192.168.1.49:5000";
+String baseurl = "http://192.168.200.59:5000";
 int? lid;
 Future<void> loginUser(String username, String password, context) async {
   final dio = Dio();

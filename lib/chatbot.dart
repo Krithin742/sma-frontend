@@ -11,6 +11,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController messageController = TextEditingController();
   List<Map<String, dynamic>> messages = [];
+  bool isloading = false;
 
   initState() {
     super.initState();
@@ -18,10 +19,16 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void fetch() async {
+    setState(() {
+      isloading = true;
+    });
     messages = await chatbotApi({
       'query': 'hello',
     });
-    setState(() {});
+
+    setState(() {
+      isloading = false;
+    });
   }
 
   // void sendMessage() {
@@ -146,19 +153,31 @@ class _ChatScreenState extends State<ChatScreen> {
                   // Send Button
                   ElevatedButton(
                     onPressed: () async {
-                      messages = await chatbotApi({
-                        'query': messageController.text,
-                      });
-                      print(messages);
-                      messageController.clear();
-                      setState(() {});
+                      if (!isloading &&
+                          messageController.text.trim().isNotEmpty) {
+                        setState(() {
+                          isloading = true;
+                        });
+                        messages = await chatbotApi({
+                          'query': messageController.text,
+                        });
+                        print(messages);
+                        messageController.clear();
+                        setState(() {
+                          isloading = false;
+                        });
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(15),
                       shape: CircleBorder(),
                       backgroundColor: Colors.white,
                     ),
-                    child: Icon(Icons.send, color: Colors.teal.shade800),
+                    child: isloading
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Icon(Icons.send, color: Colors.teal.shade800),
                   ),
                 ],
               ),

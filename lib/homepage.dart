@@ -66,8 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 58, 150, 226),
-          title: const Text('SnapSumm'),
+          backgroundColor: const Color.fromARGB(255, 27, 137, 227),
+          title: const Text('EDUSYNC'),
           centerTitle: true,
           elevation: 0,
         ),
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  "Welcome to SnapSumm",
+                  "Welcome to EDUSYNC",
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    " ${historydata[index]["title"] ?? 'Unknown File'}",
+                                    " ${historydata[index]["pdf_file"] ?? 'Unknown File'}",
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
