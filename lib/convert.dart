@@ -156,7 +156,7 @@ class _ConvertState extends State<Convert> {
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['pdf'],
+      allowedExtensions: ['pdf',"docx"],
     );
 
     if (result != null) {
@@ -273,7 +273,7 @@ class _ConvertState extends State<Convert> {
 
     try {
       var response = await dio.post(
-        '$baseurl/api/summarize-pdf/', // Replace with actual URL
+        '$baseurl/PdfDocSummarizationAPI', // Replace with actual URL
         data: formData,
       );
 

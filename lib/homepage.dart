@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       isLoading = true;
     });
     historydata = await getHistoryfromapi();
-    print(historydata);
+    print("e$historydata");
     setState(() {
       isLoading = false;
     });
@@ -96,7 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (isLoading)
                   CircularProgressIndicator()
                 else if (historydata.isEmpty)
-                  Expanded(child: Text("No history data"))
+                  Expanded(
+                      child: TextButton(
+                          onPressed: () {
+                            fetch();
+                          },
+                          child: Text("No history data")))
                 else
                   Expanded(
                     child: ListView.builder(
